@@ -17,10 +17,22 @@ class Database
         $this->_pass = getenv('DB_PASS') ?: 'root';
 
         $db = "mysql:host={$this->_host};port={$this->_port};dbname={$this->_dbname};charset=utf8mb4";
-        $this->pdo = new PDO($db, $this->_user, $this->_pass, [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]);
+        $attempts = 60;
+        while ($attempts > 0) {
+            try {
+                $this->pdo = new PDO($db, $this->_user, $this->_pass, [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                ]);
+                return;
+            } catch (PDOException $e) {
+                $attempts--;
+                if ($attempts === 0) {
+                    throw $e;
+                }
+                sleep(1);
+            }
+        }
     }
 
     public function fetchId($id)
