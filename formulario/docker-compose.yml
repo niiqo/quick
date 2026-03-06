@@ -26,6 +26,7 @@ services:
       - ./:/var/www/html
     environment:
       DB_HOST: db
+      DB_PORT: 3306
       DB_NAME: db4ftndih4hblv
       DB_USER: root
       DB_PASS: root

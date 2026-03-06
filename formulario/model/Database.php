@@ -2,20 +2,26 @@
 class Database
 {
     public $pdo;
-    private $_host = "db";
-    private $_dbname = "db4ftndih4hblv";
-    private $_user = "root";
-    private $_pass = "root";
-    /*
-    private $_user = "uvzcmq8ynnon4";
-    private $_pass = "quicktr2024";
-    */ 
+    private $_host;
+    private $_port;
+    private $_dbname;
+    private $_user;
+    private $_pass;
 
     public function __construct()
-{
-    $db = "mysql:host=$this->_host;dbname=$this->_dbname";
-    $this->pdo = new PDO($db, "$this->_user", "$this->_pass");
-}
+    {
+        $this->_host = getenv('DB_HOST') ?: 'db';
+        $this->_port = getenv('DB_PORT') ?: '3306';
+        $this->_dbname = getenv('DB_NAME') ?: 'db4ftndih4hblv';
+        $this->_user = getenv('DB_USER') ?: 'root';
+        $this->_pass = getenv('DB_PASS') ?: 'root';
+
+        $db = "mysql:host={$this->_host};port={$this->_port};dbname={$this->_dbname};charset=utf8mb4";
+        $this->pdo = new PDO($db, $this->_user, $this->_pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]);
+    }
 
     public function fetchId($id)
     {
