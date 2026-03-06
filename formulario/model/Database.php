@@ -12,10 +12,10 @@ class Database
     */ 
 
     public function __construct()
-    {
-        $db = "mysql:host=$this->_host;dbname=$this->_dbname";
-        $this->pdo = new PDO($db, "$this->_user", "$this->_pass");
-    }
+{
+    $db = "mysql:host=$this->_host;dbname=$this->_dbname";
+    $this->pdo = new PDO($db, "$this->_user", "$this->_pass");
+}
 
     public function fetchId($id)
     {
