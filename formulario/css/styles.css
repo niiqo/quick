@@ -64,3 +64,99 @@ input::-webkit-inner-spin-button {
         position: absolute;top: 25vh; left:33vw;
     }
 }
+/* ===== Modern visual refresh (no logic changes) ===== */
+:root {
+  --app-bg-1: #1e2226;
+  --app-bg-2: #232a31;
+  --app-surface: rgba(25, 32, 40, 0.78);
+  --app-surface-strong: #1f2730;
+  --app-border: rgba(255, 255, 255, 0.08);
+  --app-text: #e9f1f7;
+  --app-muted: #9fb0c0;
+  --app-primary: #2ec4dc;
+  --app-primary-strong: #18a8bf;
+  --app-radius: 14px;
+  --app-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+body.app-body {
+  color: var(--app-text);
+  background:
+    radial-gradient(circle at 12% 15%, rgba(46, 196, 220, 0.16), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(21, 147, 165, 0.2), transparent 42%),
+    linear-gradient(160deg, var(--app-bg-1) 0%, #27343d 48%, #1e2a33 100%);
+}
+
+.app-topbar,
+.app-main-nav {
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface) !important;
+  box-shadow: var(--app-shadow);
+}
+
+.app-topbar {
+  border-radius: 0 0 12px 12px;
+}
+
+.app-announce-btn {
+  right: 20px;
+  background: linear-gradient(135deg, var(--app-primary), var(--app-primary-strong));
+  border: 0;
+  box-shadow: 0 6px 18px rgba(46, 196, 220, 0.4);
+}
+
+.app-content > .container,
+.app-content .border.bg-dark,
+#list-container .card,
+.form-container,
+.radio-inputs {
+  border-color: var(--app-border) !important;
+  box-shadow: var(--app-shadow);
+}
+
+#list-tabs .nav-link {
+  border: 0;
+  border-radius: 10px;
+  margin: 0 4px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+#list-tabs .nav-link.active {
+  background: linear-gradient(135deg, var(--app-primary), var(--app-primary-strong));
+  color: #fff !important;
+  box-shadow: 0 8px 18px rgba(46, 196, 220, 0.35);
+}
+
+.searchBox,
+.searchInput {
+  border-radius: 999px !important;
+}
+
+.searchInput {
+  border: 1px solid var(--app-border) !important;
+  background-color: rgba(14, 20, 27, 0.58) !important;
+}
+
+.searchInput::placeholder {
+  color: #95a9ba;
+}
+
+.button {
+  min-height: 42px;
+}
+
+.button:focus-visible,
+.searchInput:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--app-primary);
+  outline-offset: 2px;
+}
+
+.app-footer .nav-link {
+  border-radius: 999px;
+  background: rgba(20, 27, 36, 0.85) !important;
+  color: var(--app-text);
+  border: 1px solid var(--app-border);
+}

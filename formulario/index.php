@@ -91,14 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="controller/jSignature/jSignature.min.js"></script>
 </head>
 
-<body>
+<body class="app-body">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-light text-light" style="background-color:rgb(43,45,46);">
+    <nav class="navbar navbar-light text-light app-topbar">
         <a class="navbar-brand mx-auto" href="">
             <img class="rounded mx-auto" src="LOGO.png" alt="logo" height="60">
         </a>
         <?php if (isset($_SESSION["login"])) : ?>
-            <button class="btn position-relative text-light" style="right: 20px; background-color:#25BED4" data-bs-toggle="modal" data-bs-target="#messageModal">
+            <button class="btn position-relative text-light app-announce-btn" data-bs-toggle="modal" data-bs-target="#messageModal">
                 <i class="bi bi-megaphone"></i>
                 <span id="announcementsPill" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     0
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     ?>
 
-    <nav class="container rounded text-light sticky-top p-3 mt-3" style="background-color:rgb(43,45,46);">
+    <nav class="container rounded text-light sticky-top p-3 mt-3 app-main-nav">
         <div class="input-group d-flex">
             <div class="btn-group">
                 <button class="button w-25 btn btn-dark mx-1 text-light my-auto" style="border-radius:6px 0 0 6px" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <!-- CONTENIDO -->
-    <div class="container my-4">
+    <div class="container my-4 app-content">
         <?php
         if (isset($_GET["pag"])) {
             include_once $_GET["pag"] . '.php';
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <!-- FOOTER -->
-    <ul class="nav nav-tabs mt-2 border-0">
+    <ul class="nav nav-tabs mt-2 border-0 app-footer">
         <li class="mx-auto">
             <span class="nav-link active text-bg-dark border-0">QuickTR <span class="badge badge-pill bg-danger">2.3.1</span></span>
         </li>

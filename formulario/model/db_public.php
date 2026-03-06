@@ -1,15 +1,26 @@
 <?php
 // model/db_public.php
 class DatabasePublic {
-    private $host = "db";
-    private $db_name = "db4ftndih4hblv";
-    private $username = "root";
-    private $password = "root";
+    private $host;
+    private $port;
+    private $db_name;
+    private $username;
+    private $password;
     public $pdo;
 
     public function __construct() {
         try {
-            $this->pdo = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->host = getenv('DB_HOST') ?: 'db';
+            $this->port = getenv('DB_PORT') ?: '3306';
+            $this->db_name = getenv('DB_NAME') ?: 'db4ftndih4hblv';
+            $this->username = getenv('DB_USER') ?: 'root';
+            $this->password = getenv('DB_PASS') ?: 'root';
+
+            $this->pdo = new PDO(
+                "mysql:host={$this->host};port={$this->port};dbname={$this->db_name};charset=utf8mb4",
+                $this->username,
+                $this->password
+            );
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e) {
             die("Error: " . $e->getMessage());

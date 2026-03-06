@@ -23,9 +23,10 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./formulario/formulario:/var/www/html
+      - ./:/var/www/html
     environment:
       DB_HOST: db
+      DB_PORT: 3306
       DB_NAME: db4ftndih4hblv
       DB_USER: root
       DB_PASS: root
