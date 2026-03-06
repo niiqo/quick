@@ -1,10 +1,10 @@
 <?php
 // model/db_public.php
 class DatabasePublic {
-    private $host = "localhost";
+    private $host = "db";
     private $db_name = "db4ftndih4hblv";
     private $username = "root";
-    private $password = "";
+    private $password = "root";
     public $pdo;
 
     public function __construct() {

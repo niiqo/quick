@@ -2,10 +2,10 @@
 class Database
 {
     public $pdo;
-    private $_host = "localhost";
+    private $_host = "db";
     private $_dbname = "db4ftndih4hblv";
     private $_user = "root";
-    private $_pass = "";
+    private $_pass = "root";
     /*
     private $_user = "uvzcmq8ynnon4";
     private $_pass = "quicktr2024";
